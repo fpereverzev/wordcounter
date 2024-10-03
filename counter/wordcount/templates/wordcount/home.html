@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Word Counter</title>
+</head>
+<body>
+    <h1>Word Counter Application</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h2>Upload a File</h2>
+        <input type="file" name="file" required>
+        <button type="submit" name="upload_file">Upload</button>
+    </form>
+
+    <form method="POST">
+        {% csrf_token %}
+        <h2>Count Word</h2>
+        <input type="text" name="word" required>
+        <button type="submit" name="wordcount">Count</button>
+    </form>
+
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" name="clear_memory">Clear Memory</button>
+    </form>
+
+    {% if count is not None %}
+        <h3>Word Count: {{ count }}</h3>
+    {% endif %}
+</body>
+</html>
